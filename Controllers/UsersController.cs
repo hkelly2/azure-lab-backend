@@ -29,7 +29,7 @@ public class UsersController : Controller
         await _db.Connection.OpenAsync();
 
         using var cmd = _db.Connection.CreateCommand();
-        var sql = "SELECT * FROM user WHERE id=" + id;
+        var sql = "SELECT * FROM [User] WHERE id=" + id;
         cmd.CommandText = sql;
         var reader = await cmd.ExecuteReaderAsync();
         var user = new User();
@@ -54,7 +54,7 @@ public class UsersController : Controller
         await _db.Connection.OpenAsync();
 
         using var cmd = _db.Connection.CreateCommand();
-        var sql = "SELECT * FROM user WHERE username='" + form.Username + "'"
+        var sql = "SELECT * FROM [User] WHERE username='" + form.Username + "'"
                         + " AND password='" + form.Password + "'";
         cmd.CommandText = sql;
         var reader = await cmd.ExecuteReaderAsync();
